@@ -1,6 +1,6 @@
 
 D np_6p0
-D pn_6p0 
+D pn_6p0
 D diode_nd2ps_06v0
 D diode_pd2nw_06v0
 D diode_nd2ps_03v3
@@ -11,7 +11,9 @@ D condiode
 R ppolyf_u_1k_6p0 R=r_length/r_width*50
 R ppolyf_u_1k R=r_length/r_width*50
 R ppolyf_u R=r_length/r_width*50
+R ppolyf_u_resistor R=r_length/r_width*50
 R ppolyf_s R=r_length/r_width*50
+R ppolyf_s_resistor R=r_length/r_width*50
 R short model=switch_on
 R efuse model=fuse_on
 
@@ -31,7 +33,8 @@ MP pfet_03v3 Vth=-0.3 Vds=3.3 Vgs=3.3
 C mim_2p0fF
 
 C cap_mim_2f0_m4m5_noshield
+C cap_nmos
 C cap_nmos_06v0
 
 
-Q pnp_10p00x00p42 diode=(1-2,3-2) 
+Q pnp_10p00x00p42 diode=(1-2,3-2)
