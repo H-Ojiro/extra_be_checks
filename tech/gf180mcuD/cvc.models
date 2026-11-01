@@ -11,9 +11,7 @@ D condiode
 R ppolyf_u_1k_6p0 R=r_length/r_width*50
 R ppolyf_u_1k R=r_length/r_width*50
 R ppolyf_u R=r_length/r_width*50
-R ppolyf_u_resistor R=r_length/r_width*50
 R ppolyf_s R=r_length/r_width*50
-R ppolyf_s_resistor R=r_length/r_width*50
 R short model=switch_on
 R efuse model=fuse_on
 
@@ -33,7 +31,6 @@ MP pfet_03v3 Vth=-0.3 Vds=3.3 Vgs=3.3
 C mim_2p0fF
 
 C cap_mim_2f0_m4m5_noshield
-C cap_nmos
 C cap_nmos_06v0
 
 
