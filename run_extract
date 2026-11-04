@@ -508,5 +508,5 @@ elif [[ ${magic_status:=0} -ne 0 ]]; then
 Warning: extraction completed with warnings"
 fi
 
-echo "Runinng check_extraction .."
+echo "Running check_extraction .."
 ${LVS_ROOT}/check_extraction ${EXT_DIR}
