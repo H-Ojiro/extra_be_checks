@@ -334,7 +334,7 @@ for tag in "fd" "ocd"; do
       mv -v "${sram_lef}" "${sram_lef}".bak
       base=$(basename "${sram_lef}")
       base_name=${base%.lef}
-      macro_name=${base%\$*}
+      macro_name=${base_name%\$*}
       echo "Copying ${PDKPATH}/libs.ref/gf180mcu_${tag}_ip_sram/lef/${macro_name}.lef -> ${sram_lef} .."
       echo "Modify macro name ${macro_name} -> ${base_name}"
       sed -e "s/${macro_name}/${base_name}/g" \
@@ -347,7 +347,7 @@ for io_lef in "${EXT_DIR}"/gf180mcu_fd_io__*.lef; do
   mv -v "${io_lef}" "${io_lef}".bak
   base=$(basename "${io_lef}")
   base_name=${base%.lef}
-  macro_name=${base%\$*}
+  macro_name=${base_name%\$*}
   echo "Copying ${PDKPATH}/libs.ref/gf180mcu_fd_io/lef/${macro_name}.lef -> ${io_lef} .."
   echo "Modify macro name ${macro_name} -> ${base_name}"
   sed -e "s/${macro_name}/${base_name}/g" \
@@ -359,7 +359,7 @@ for io_lef in "${EXT_DIR}"/gf180mcu_ocd_io__*.lef; do
   mv -v "${io_lef}" "${io_lef}".bak
   base=$(basename "${io_lef}")
   base_name=${base%.lef}
-  macro_name=${base%\$*}
+  macro_name=${base_name%\$*}
   echo "Copying ${PDKPATH}/libs.ref/gf180mcu_ocd_io/lef/${macro_name%%__*}.lef -> ${io_lef} .."
   echo "Modify macro name ${macro_name} -> ${base_name}"
   sed -e "s/${macro_name}/${base_name}/g" \
