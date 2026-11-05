@@ -327,6 +327,7 @@ magic -dnull -noc -rcfile $LVS_ROOT/tech/magicrc $EXT_DIR/abstract.tcl </dev/nul
 	tee -a $WORK_ROOT/$LOG_FILE
 abstract_status=${PIPESTATUS[0]}
 
+: <<COMMENTS
 shopt -s nullglob
 
 for tag in "fd" "ocd"; do
@@ -368,6 +369,7 @@ for io_lef in "${EXT_DIR}"/gf180mcu_ocd_io__*.lef; do
 done
 
 shopt -u nullglob
+COMMENTS
 
 # create layout extraction script
 cat > $EXT_DIR/extract.tcl <<EOF
