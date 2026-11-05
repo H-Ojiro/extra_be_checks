@@ -328,6 +328,24 @@ magic -dnull -noc -rcfile $LVS_ROOT/tech/magicrc $EXT_DIR/abstract.tcl </dev/nul
 	tee -a $WORK_ROOT/$LOG_FILE
 abstract_status=${PIPESTATUS[0]}
 
+shopt -s nullglob
+for abstract in "${EXT_DIR}"/*.lef; do
+  base=$(basename "${abstract}")
+  base_name=${base%.lef}
+  macro_name=${base_name%\$*}
+
+  libs_lef=(find ${PDKPATH}/libs.ref/ -name ${macro_name}.lef)
+  if [[ -n ${libs_lef} ]]; then
+    mv -v "${abstract}" "${abstract}".bak
+    echo "Copying ${libs_ref} -> ${abstract} .."
+    echo "Modify macro name ${macro_name} -> ${base_name}"
+    sed -e "s/${macro_name}/${base_name}/g" \
+           "${PDKPATH}/libs.ref/gf180mcu_fd_io/lef/${macro_name}.lef" \
+           > "${abstract}"
+  fi
+done
+shopt -u nullglob
+
 : <<COMMENTS
 shopt -s nullglob
 
@@ -345,16 +363,20 @@ for tag in "fd" "ocd"; do
     done
 done
 
-for io_lef in "${EXT_DIR}"/gf180mcu_fd_io__*.lef; do
-  mv -v "${io_lef}" "${io_lef}".bak
-  base=$(basename "${io_lef}")
+for abstract in "${EXT_DIR}"/*.lef; do
+  base=$(basename "${abstract}")
   base_name=${base%.lef}
   macro_name=${base_name%\$*}
-  echo "Copying ${PDKPATH}/libs.ref/gf180mcu_fd_io/lef/${macro_name}.lef -> ${io_lef} .."
-  echo "Modify macro name ${macro_name} -> ${base_name}"
-  sed -e "s/${macro_name}/${base_name}/g" \
-         "${PDKPATH}/libs.ref/gf180mcu_fd_io/lef/${macro_name}.lef" \
-         > "${io_lef}"
+
+  libs_lef=(find ${PDKPATH}/libs.ref/ -name ${macro_name}.lef)
+  if [[ -n ${libs_lef} ]]; then
+    mv -v "${abstract}" "${abstract}".bak
+    echo "Copying ${libs_ref} -> ${abstract} .."
+    echo "Modify macro name ${macro_name} -> ${base_name}"
+    sed -e "s/${macro_name}/${base_name}/g" \
+           "${PDKPATH}/libs.ref/gf180mcu_fd_io/lef/${macro_name}.lef" \
+           > "${abstract}"
+  fi
 done
 
 for io_lef in "${EXT_DIR}"/gf180mcu_ocd_io__*.lef; do
