@@ -485,7 +485,10 @@ Warning: unknown layers. See $LOG_ROOT/$LOG_FILE"
 	magic_status=1
 fi
 
-echo "Running check_extraction .."
+echo
+echo "-------------------------"
+echo "Start check_extraction .."
+echo "-------------------------"
 ${LVS_ROOT}/check_extraction ${EXT_DIR}
 
 # Check that extraction completed successfully
@@ -499,3 +502,8 @@ elif [[ ${magic_status:=0} -ne 0 ]]; then
 	echo "
 Warning: extraction completed with warnings"
 fi
+
+echo
+echo "-------------------------"
+echo "End of run_extraction."
+echo "-------------------------"
