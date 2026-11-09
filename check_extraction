@@ -61,18 +61,16 @@ Non-leaf cells without explict ports"
 comm -12 $1/../noport.subckt $1/../layout.subckt |
 	comm -23 - $1/../leaf.subckt
 
-exit
-
-echo "
-Illegal overlaps"
-grep -B1 legal $1/*feedback* |
-	awk '{
-		if ( /^box/ ) {
-			print $1, $2/200.0, $3/200.0, $4/200.0, $5/200.0;
-		} else {
-			print $0;
-		}
-	}'
+# echo "
+# Illegal overlaps"
+# grep -B1 legal $1/*feedback* |
+# 	awk '{
+# 		if ( /^box/ ) {
+# 			print $1, $2/200.0, $3/200.0, $4/200.0, $5/200.0;
+# 		} else {
+# 			print $0;
+# 		}
+# 	}'
 
 shift
 done
