@@ -490,7 +490,7 @@ echo "-------------------------"
 echo "Start check_extraction .."
 echo "-------------------------"
 echo "LOG FILE: ${LOG_ROOT}/${CHECK_LOG:=check_ext.log}"
-${LVS_ROOT}/check_extraction ${EXT_DIR} 2>&1 | tee ${LOG_ROOT}/${CHECK_LOG}
+${LVS_ROOT}/check_extraction ${EXT_DIR} 2>&1 > ${LOG_ROOT}/${CHECK_LOG}
 
 # Check that extraction completed successfully
 if [[ $abstract_status -ne 0 || \
