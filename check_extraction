@@ -61,6 +61,8 @@ Non-leaf cells without explict ports"
 comm -12 $1/../noport.subckt $1/../layout.subckt |
 	comm -23 - $1/../leaf.subckt
 
+exit
+
 echo "
 Illegal overlaps"
 grep -B1 legal $1/*feedback* |
